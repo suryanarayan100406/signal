@@ -1,172 +1,153 @@
-# ConvoSim - Convolution Calculator
+# ConvoSim - Convolution Calculator (Beginner Guide)
 
-ConvoSim is an interactive web app to learn and compute discrete-time signal operations:
-- Linear convolution
+ConvoSim is a visual tool to learn linear convolution with simple inputs and step-by-step animation.
 
-## Who is this for?
+## What you can do
 
-If you are new to signal processing, this app is designed for you.
-It shows each convolution step visually, instead of only giving the final number sequence.
+- Enter two signals as comma-separated values
+- Watch convolution happen one step at a time
+- See the final output table
+- Copy or download the result as PNG
 
-## Core idea in simple words
+## Convolution in one minute
 
-### 1) Signal
-A discrete-time signal is just a list of numbers ordered by index:
-- Example: x[n] = [1, 2, 3, 1]
-- The index n usually starts at 0, but you can set a different start index n0.
+A discrete-time signal is just a sequence of numbers.
 
-### 2) Convolution (output of system)
-Convolution combines two signals to produce a new signal:
+Example:
+- x[n] = 1, 2, 3, 1
+- h[n] = 1, 1, 1
 
-y[n] = sum over k of x[k] * h[n-k]
+Convolution formula:
 
-Think of it as:
+y[n] = sum x[k] * h[n-k]
+
+Practical meaning:
 1. Flip h
-2. Slide h across x
+2. Shift it across x
 3. Multiply overlap values
 4. Add them to get one output sample
-5. Repeat for each output index
+5. Repeat for all output indices
 
-## Quick start (run locally)
+## Quick start
 
 Requirements:
-- Node.js 18 or newer
+- Node.js 18+
 - npm
 
-Install and run:
+Run locally:
 
 ```bash
 npm install
 npm run dev
 ```
 
-Open:
-- http://localhost:3000
+Open http://localhost:3000 in your browser.
 
-Production build test:
+Optional production test:
 
 ```bash
 npm run build
 npm start
 ```
 
-## How to use the app (step-by-step)
+## How to use the app
 
-The home page has 3 sections from top to bottom.
+The page has 3 sections.
 
-### 1) Signal Input Panel
-- Enter x[n] and h[n] as comma-separated numbers.
-  - Example: 1, 2, 3, 1
-- Optionally set n0 (starting index) for each signal.
-- Use preset buttons if you want ready-made signals:
-  - Unit Impulse
-  - Unit Step
-  - Rectangular Pulse
-  - Ramp
-  - Exponential (a=0.5)
-  - Sinusoidal (w=pi/4)
-- Live stem plots update while you type.
-- Click Calculate Convolution to compute and update all sections.
+### 1) Signal Input
+
+- Enter x[n] and h[n] using commas
+   - Example: 1, 2, 3, 1
+- Optional: set n0 (starting index) for each signal
+- You can use presets:
+   - Unit Impulse
+   - Unit Step
+   - Rectangular Pulse
+   - Ramp
+   - Exponential (a=0.5)
+   - Sinusoidal (w=pi/4)
+- Click Calculate Convolution
 
 ### 2) Convolution Visualizer
-You will see 4 stacked plots:
+
+You will see 4 rows:
 1. x[k] (fixed)
-2. h[n-k] (flipped and shifted each step)
-3. x[k] * h[n-k] (pointwise product)
-4. y[n] (accumulating output)
+2. h[n-k] (flipped and shifted)
+3. x[k] * h[n-k] (product)
+4. y[n] (output building step by step)
 
 Controls:
-- Prev: go one step back
-- Play/Pause: animate steps
-- Next: go one step forward
-- Reset: return to first step
-- Speed slider: Slow / Normal / Fast
-
-Important:
-- The text line above the plots shows the current equation being computed.
-- Step counter shows progress through all output samples.
+- Prev
+- Play or Pause
+- Next
+- Reset
+- Speed slider (Slow, Normal, Fast)
 
 ### 3) Result Summary
-- Final y[n] table is shown with index n and values
-- Formula is displayed
-- Copy Result copies the output to clipboard
-- Download as PNG exports the result area as an image
 
-## First learning exercise (recommended)
+- Output table of y[n]
+- Formula display
+- Copy Result button
+- Download as PNG button
 
-Use this simple test:
+## First example to try
+
+Input:
 - x[n] = 1, 2, 3, 1
 - h[n] = 1, 1, 1
-- n0 for both = 0
+- n0 = 0 for both
 
-Expected convolution output:
+Expected output:
 - y[n] = 1, 3, 6, 6, 4, 1
 
-Then try these concept checks:
-1. Set h[n] = Unit Impulse [1]
-   - You should get y[n] = x[n] (same shape)
-2. Change n0 for x[n] or h[n]
-   - Observe how output indices shift while values follow convolution rules
-3. Use Ramp or Sinusoidal preset
-   - Observe how the output shape changes with different inputs
+Quick checks:
+1. Set h[n] to Unit Impulse [1], output should match x[n]
+2. Change n0 and observe index shift behavior
+3. Try Ramp and Sinusoidal presets and compare output shapes
 
-## How to read the stem plots
+## How to read stem plots
 
-- Horizontal axis: sample index n
+- Horizontal axis: index n
 - Vertical axis: amplitude
 - Blue stem: positive value
 - Red stem: negative value
-- Gray dot on axis: zero value
-- Orange highlight: currently active sample
+- Gray point: zero
+- Orange highlight: current active sample
 
-## About page (for report)
+## About page
 
-Open:
-- /about
-
-This page includes:
-- Project abstract
-- Convolution block diagram
+Open /about for a print-friendly summary containing:
+- Short abstract
+- Convolution block flow
 - Concepts covered
 
-It is print-friendly for report appendix usage.
-
-## Project scripts
+## Scripts
 
 ```bash
-npm run dev        # Development server
-npm run build      # Production build
-npm run start      # Run production server
-npm run lint       # Lint checks
+npm run dev
+npm run build
+npm run start
+npm run lint
 ```
-
-## Deploy to Vercel
-
-This project is Vercel-ready.
-- Import the GitHub repo into Vercel
-- Build command: npm run build
-
-If you ever see an output-directory error, ensure Vercel is not configured as a static export project with output directory set to public.
 
 ## Troubleshooting
 
-1) "Use comma-separated numeric values only"
-- Remove extra commas and spaces like: 1, 2, 3
+1. Invalid input error
+Use valid comma-separated numbers only.
 
-2) Nothing changes after editing signals
-- Click Calculate Convolution after making changes
+2. Output not updating
+Press Calculate Convolution after changing inputs.
 
-3) Build fails locally
-- Delete node_modules and reinstall:
+3. Build issue
+Reinstall dependencies:
 
-```bash
-rm -rf node_modules package-lock.json
+```powershell
+Remove-Item -Recurse -Force node_modules
+Remove-Item -Force package-lock.json
 npm install
 npm run build
 ```
 
-(For Windows PowerShell, use Remove-Item with -Recurse -Force.)
-
 ## License
 
-For educational and academic use.
+Educational and academic use.
