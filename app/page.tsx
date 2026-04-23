@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 
 import ConvolutionEngine from "@/components/ConvolutionEngine";
-import CorrelationPanel from "@/components/CorrelationPanel";
 import ResultSummary from "@/components/ResultSummary";
 import SignalInput, { SignalInputPayload } from "@/components/SignalInput";
 import { linearConvolution } from "@/lib/convolution";
@@ -37,11 +36,11 @@ export default function HomePage() {
           <div>
             <p className="text-xs uppercase tracking-[0.2em] text-blue-300">ConvoSim</p>
             <h1 className="mt-2 text-3xl font-bold tracking-tight text-slate-100 sm:text-4xl">
-              Convolution and Correlation Calculator
+              Convolution Calculator
             </h1>
             <p className="mt-3 max-w-3xl text-sm text-slate-300 sm:text-base">
-              Build intuition for discrete-time signal operations through a step-by-step animated
-              convolution process, then inspect cross-correlation and auto-correlation behavior.
+              Learn linear convolution using simple signal input, clear stem-plot visualization,
+              and step-by-step animation.
             </p>
           </div>
 
@@ -70,8 +69,6 @@ export default function HomePage() {
           hStartIndex={activeInput.hStartIndex}
           result={convolutionResult}
         />
-
-        <CorrelationPanel xSignal={activeInput.xSignal} hSignal={activeInput.hSignal} />
 
         <ResultSummary result={convolutionResult} />
       </div>

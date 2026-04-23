@@ -60,7 +60,7 @@ const ResultSummary = ({ result }: ResultSummaryProps) => {
     <section className="rounded-2xl border border-slate-700/80 bg-slate-800/80 p-6 shadow-xl shadow-slate-950/30 backdrop-blur-sm">
       <header className="mb-5 flex flex-wrap items-end justify-between gap-3">
         <div>
-          <h2 className="text-xl font-semibold text-slate-100">4) Result Summary</h2>
+          <h2 className="text-xl font-semibold text-slate-100">3) Result Summary</h2>
           <p className="mt-1 text-sm text-slate-300">Final output sequence table, formula, and export actions.</p>
         </div>
         <div className="flex flex-wrap gap-2">

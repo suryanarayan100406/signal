@@ -1,11 +1,7 @@
-# ConvoSim - Convolution and Correlation Calculator
+# ConvoSim - Convolution Calculator
 
 ConvoSim is an interactive web app to learn and compute discrete-time signal operations:
 - Linear convolution
-- Cross-correlation
-- Auto-correlation
-
-It is built with Next.js 14 + TypeScript + Tailwind CSS, with no backend required.
 
 ## Who is this for?
 
@@ -30,20 +26,6 @@ Think of it as:
 3. Multiply overlap values
 4. Add them to get one output sample
 5. Repeat for each output index
-
-### 3) Cross-correlation (similarity vs shift)
-Cross-correlation tells how similar two signals are at different shifts (lags):
-
-Rxy[l] = sum over n of x[n] * y[n+l]
-
-### 4) Auto-correlation
-Auto-correlation compares a signal with itself:
-
-Rxx[l] = sum over n of x[n] * x[n+l]
-
-Useful facts:
-- It is symmetric around lag 0
-- Maximum is usually at lag 0
 
 ## Quick start (run locally)
 
@@ -70,7 +52,7 @@ npm start
 
 ## How to use the app (step-by-step)
 
-The home page has 4 sections from top to bottom.
+The home page has 3 sections from top to bottom.
 
 ### 1) Signal Input Panel
 - Enter x[n] and h[n] as comma-separated numbers.
@@ -104,15 +86,7 @@ Important:
 - The text line above the plots shows the current equation being computed.
 - Step counter shows progress through all output samples.
 
-### 3) Correlation Panel
-- Switch tabs:
-  - Cross-Correlation
-  - Auto-Correlation
-- View stem plot vs lag
-- See table of lag and correlation values
-- Peak lag is highlighted
-
-### 4) Result Summary
+### 3) Result Summary
 - Final y[n] table is shown with index n and values
 - Formula is displayed
 - Copy Result copies the output to clipboard
@@ -131,10 +105,10 @@ Expected convolution output:
 Then try these concept checks:
 1. Set h[n] = Unit Impulse [1]
    - You should get y[n] = x[n] (same shape)
-2. Switch to Auto-Correlation tab
-   - Highest peak should appear at lag 0
+2. Change n0 for x[n] or h[n]
+   - Observe how output indices shift while values follow convolution rules
 3. Use Ramp or Sinusoidal preset
-   - Observe how cross-correlation peak changes with lag
+   - Observe how the output shape changes with different inputs
 
 ## How to read the stem plots
 
@@ -154,7 +128,6 @@ This page includes:
 - Project abstract
 - Convolution block diagram
 - Concepts covered
-- Tech stack summary
 
 It is print-friendly for report appendix usage.
 
@@ -165,14 +138,12 @@ npm run dev        # Development server
 npm run build      # Production build
 npm run start      # Run production server
 npm run lint       # Lint checks
-npm run typecheck  # TypeScript type checks
 ```
 
 ## Deploy to Vercel
 
 This project is Vercel-ready.
 - Import the GitHub repo into Vercel
-- Framework should be detected as Next.js
 - Build command: npm run build
 
 If you ever see an output-directory error, ensure Vercel is not configured as a static export project with output directory set to public.

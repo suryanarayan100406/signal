@@ -3,18 +3,9 @@ import Link from "next/link";
 const concepts = [
   "Discrete-time finite-length sequences and indexing",
   "Linear convolution as sliding weighted overlap",
-  "Cross-correlation for lag alignment and similarity",
-  "Auto-correlation symmetry and zero-lag peak",
+  "Flip-shift-multiply-add procedure",
+  "Convolution output length: N + M - 1",
   "Step-wise accumulation for educational DSP visualization"
-];
-
-const techStack = [
-  "Next.js 14 App Router",
-  "TypeScript",
-  "Tailwind CSS",
-  "Canvas API",
-  "html2canvas",
-  "Vercel deployment"
 ];
 
 const blocks = [
@@ -31,16 +22,16 @@ export default function AboutPage() {
       <div className="print-surface rounded-2xl border border-slate-700/80 bg-slate-800/80 p-6 shadow-xl shadow-slate-950/30 backdrop-blur-sm">
         <header className="mb-6">
           <p className="text-xs uppercase tracking-[0.2em] text-blue-300">IEEE Appendix Reference</p>
-          <h1 className="mt-2 text-3xl font-bold text-slate-100">ConvoSim: Convolution and Correlation Calculator</h1>
+          <h1 className="mt-2 text-3xl font-bold text-slate-100">ConvoSim: Convolution Calculator</h1>
           <p className="mt-3 text-sm leading-relaxed text-slate-300">
-            ConvoSim is an educational, browser-based simulator for discrete-time signal processing.
-            It demonstrates linear convolution, cross-correlation, and auto-correlation using
-            synchronized visual stem plots and step-wise algorithm animation.
+            ConvoSim is an educational simulator for linear convolution of discrete-time signals.
+            It shows each step of the process visually so learners can understand how the output
+            sequence is formed.
           </p>
         </header>
 
         <section className="mb-7">
-          <h2 className="mb-3 text-lg font-semibold text-slate-100">Block Diagram</h2>
+          <h2 className="mb-3 text-lg font-semibold text-slate-100">Convolution Block Flow</h2>
           <div className="flex flex-wrap items-center gap-2 text-sm">
             {blocks.map((block, index) => (
               <div key={block} className="flex items-center gap-2">
@@ -62,20 +53,6 @@ export default function AboutPage() {
               </li>
             ))}
           </ul>
-        </section>
-
-        <section className="mb-7">
-          <h2 className="mb-3 text-lg font-semibold text-slate-100">Tech Stack</h2>
-          <div className="flex flex-wrap gap-2">
-            {techStack.map((item) => (
-              <span
-                key={item}
-                className="rounded-full border border-violet-400/60 bg-violet-500/10 px-3 py-1 text-xs text-violet-200"
-              >
-                {item}
-              </span>
-            ))}
-          </div>
         </section>
 
         <footer className="flex flex-wrap items-center justify-between gap-3 border-t border-slate-700 pt-4 text-sm text-slate-400">

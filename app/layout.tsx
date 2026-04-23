@@ -9,9 +9,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "ConvoSim - Convolution and Correlation Calculator",
-  description:
-    "Interactive discrete-time convolution and correlation visualizer with step-by-step DSP animation."
+  title: "ConvoSim - Convolution Calculator",
+  description: "Interactive discrete-time convolution visualizer with step-by-step animation."
 };
 
 export default function RootLayout({
